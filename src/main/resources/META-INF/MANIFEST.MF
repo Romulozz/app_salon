@@ -1,0 +1,3 @@
+Manifest-Version: 1.0
+Main-Class: api.qcupeu.rest.app_salon.AppSalonApplication
+
