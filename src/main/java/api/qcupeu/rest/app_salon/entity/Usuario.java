@@ -18,6 +18,11 @@ public class Usuario {
     private String password;
     private String telefono;
     private String llave_secreta;
+
+    @ManyToOne
+    @JoinColumn(name = "tipoUsuario_id")
+    private Tipo_usuario tipoUsuario;
+
     private Integer status;
 
     public Integer getId() {
@@ -76,6 +81,14 @@ public class Usuario {
         this.status = status;
     }
 
+    public Tipo_usuario getTipoUsuario() {
+        return tipoUsuario;
+    }
+
+    public void setTipoUsuario(Tipo_usuario tipoUsuario) {
+        this.tipoUsuario = tipoUsuario;
+    }
+
     @Override
     public String toString() {
         return "Usuario{" +
@@ -85,6 +98,7 @@ public class Usuario {
                 ", password='" + password + '\'' +
                 ", telefono='" + telefono + '\'' +
                 ", llave_secreta='" + llave_secreta + '\'' +
+                ", tipoUsuario=" + tipoUsuario +
                 ", status=" + status +
                 '}';
     }

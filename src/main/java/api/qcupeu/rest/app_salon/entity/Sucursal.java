@@ -18,6 +18,10 @@ public class Sucursal {
     private String ciudad;
     private Integer status;
 
+    @ManyToOne
+    @JoinColumn(name = "empresa_id")
+    private Empresa empresa;
+
     public Integer getId() {
         return id;
     }
@@ -58,6 +62,14 @@ public class Sucursal {
         this.status = status;
     }
 
+    public Empresa getEmpresa() {
+        return empresa;
+    }
+
+    public void setEmpresa(Empresa empresa) {
+        this.empresa = empresa;
+    }
+
     @Override
     public String toString() {
         return "Sucursal{" +
@@ -66,6 +78,7 @@ public class Sucursal {
                 ", direccion='" + direccion + '\'' +
                 ", ciudad='" + ciudad + '\'' +
                 ", status=" + status +
+                ", empresa=" + empresa +
                 '}';
     }
 }

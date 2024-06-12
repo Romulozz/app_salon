@@ -3,6 +3,7 @@ package api.qcupeu.rest.app_salon.entity;
 import jakarta.persistence.*;
 import org.hibernate.annotations.SQLDelete;
 import org.hibernate.annotations.Where;
+import org.springframework.stereotype.Service;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
@@ -19,8 +20,10 @@ public class Cita {
     private Integer id;
     private LocalDateTime fecha;
     private LocalDateTime hora;
-    private BigDecimal monto;
     private char metodo_pago;
+    @ManyToOne
+    @JoinColumn(name = "servicio_id")
+    private Servicio servicio;
     private Integer status;
 
     public Integer getId() {
@@ -47,20 +50,28 @@ public class Cita {
         this.hora = hora;
     }
 
-    public BigDecimal getMonto() {
-        return monto;
-    }
-
-    public void setMonto(BigDecimal monto) {
-        this.monto = monto;
-    }
-
     public char getMetodoPago() {
         return metodo_pago;
     }
 
     public void setMetodoPago(char metodoPago) {
         this.metodo_pago = metodoPago;
+    }
+
+    public char getMetodo_pago() {
+        return metodo_pago;
+    }
+
+    public void setMetodo_pago(char metodo_pago) {
+        this.metodo_pago = metodo_pago;
+    }
+
+    public Servicio getServicio() {
+        return servicio;
+    }
+
+    public void setServicio(Servicio servicio) {
+        this.servicio = servicio;
     }
 
     public Integer getStatus() {
@@ -77,8 +88,8 @@ public class Cita {
                 "id=" + id +
                 ", fecha=" + fecha +
                 ", hora=" + hora +
-                ", monto=" + monto +
-                ", metodoPago=" + metodo_pago +
+                ", metodo_pago=" + metodo_pago +
+                ", servicio=" + servicio +
                 ", status=" + status +
                 '}';
     }
