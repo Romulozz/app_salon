@@ -20,10 +20,11 @@ public class Cita {
     private Integer id;
     private LocalDateTime fecha;
     private LocalDateTime hora;
-    private char metodo_pago;
+    @Enumerated(EnumType.STRING)
+    private MetodoPago metodo_pago;
     @ManyToOne
-    @JoinColumn(name = "servicio_id")
-    private Servicio servicio;
+    @JoinColumn(name = "usuario_id")
+    private Usuario usuario;
     private Integer status;
 
     public Integer getId() {
@@ -50,28 +51,20 @@ public class Cita {
         this.hora = hora;
     }
 
-    public char getMetodoPago() {
+    public MetodoPago getMetodo_pago() {
         return metodo_pago;
     }
 
-    public void setMetodoPago(char metodoPago) {
-        this.metodo_pago = metodoPago;
-    }
-
-    public char getMetodo_pago() {
-        return metodo_pago;
-    }
-
-    public void setMetodo_pago(char metodo_pago) {
+    public void setMetodo_pago(MetodoPago metodo_pago) {
         this.metodo_pago = metodo_pago;
     }
 
-    public Servicio getServicio() {
-        return servicio;
+    public Usuario getUsuario() {
+        return usuario;
     }
 
-    public void setServicio(Servicio servicio) {
-        this.servicio = servicio;
+    public void setUsuario(Usuario usuario) {
+        this.usuario = usuario;
     }
 
     public Integer getStatus() {
@@ -89,7 +82,7 @@ public class Cita {
                 ", fecha=" + fecha +
                 ", hora=" + hora +
                 ", metodo_pago=" + metodo_pago +
-                ", servicio=" + servicio +
+                ", usuario=" + usuario +
                 ", status=" + status +
                 '}';
     }

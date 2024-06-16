@@ -17,8 +17,15 @@ public class Servicio {
     private Integer id;
     private String nombre;
     private String descripcion;
+    private String duracion;
     private BigDecimal precio;
     private Integer status;
+    @ManyToOne
+    @JoinColumn(name = "categoria_id")
+    private Categoria categoria;
+    @ManyToOne
+    @JoinColumn(name = "personal_id")
+    private Personal personal;
 
     public Integer getId() {
         return id;
@@ -44,6 +51,14 @@ public class Servicio {
         this.descripcion = descripcion;
     }
 
+    public String getDuracion() {
+        return duracion;
+    }
+
+    public void setDuracion(String duracion) {
+        this.duracion = duracion;
+    }
+
     public BigDecimal getPrecio() {
         return precio;
     }
@@ -60,14 +75,33 @@ public class Servicio {
         this.status = status;
     }
 
+    public Categoria getCategoria() {
+        return categoria;
+    }
+
+    public void setCategoria(Categoria categoria) {
+        this.categoria = categoria;
+    }
+
+    public Personal getPersonal() {
+        return personal;
+    }
+
+    public void setPersonal(Personal personal) {
+        this.personal = personal;
+    }
+
     @Override
     public String toString() {
         return "Servicio{" +
                 "id=" + id +
                 ", nombre='" + nombre + '\'' +
                 ", descripcion='" + descripcion + '\'' +
+                ", duracion='" + duracion + '\'' +
                 ", precio=" + precio +
                 ", status=" + status +
+                ", categoria=" + categoria +
+                ", personal=" + personal +
                 '}';
     }
 }

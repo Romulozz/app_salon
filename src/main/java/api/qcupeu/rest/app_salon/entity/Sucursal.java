@@ -16,6 +16,7 @@ public class Sucursal {
     private String nombre;
     private String direccion;
     private String ciudad;
+    private String logo_ruta;
     private Integer status;
 
     @ManyToOne
@@ -54,6 +55,14 @@ public class Sucursal {
         this.ciudad = ciudad;
     }
 
+    public String getLogo_ruta() {
+        return logo_ruta;
+    }
+
+    public void setLogo_ruta(String logo_ruta) {
+        this.logo_ruta = logo_ruta;
+    }
+
     public Integer getStatus() {
         return status;
     }
@@ -77,6 +86,7 @@ public class Sucursal {
                 ", nombre='" + nombre + '\'' +
                 ", direccion='" + direccion + '\'' +
                 ", ciudad='" + ciudad + '\'' +
+                ", logo_ruta='" + logo_ruta + '\'' +
                 ", status=" + status +
                 ", empresa=" + empresa +
                 '}';

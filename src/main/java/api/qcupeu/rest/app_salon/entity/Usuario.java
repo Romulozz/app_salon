@@ -17,11 +17,13 @@ public class Usuario {
     private String email;
     private String password;
     private String telefono;
-    private String llave_secreta;
+    private String token;
+    @Enumerated(EnumType.STRING)
+    private TipoUsuario tipoUsuario;
 
     @ManyToOne
-    @JoinColumn(name = "tipoUsuario_id")
-    private Tipo_usuario tipoUsuario;
+    @JoinColumn(name = "sucursal_id")
+    private Sucursal sucursal;
 
     private Integer status;
 
@@ -65,12 +67,12 @@ public class Usuario {
         this.telefono = telefono;
     }
 
-    public String getLlave_secreta() {
-        return llave_secreta;
+    public String getToken() {
+        return token;
     }
 
-    public void setLlave_secreta(String llave_secreta) {
-        this.llave_secreta = llave_secreta;
+    public void setToken(String token) {
+        this.token = token;
     }
 
     public Integer getStatus() {
@@ -81,12 +83,20 @@ public class Usuario {
         this.status = status;
     }
 
-    public Tipo_usuario getTipoUsuario() {
+    public TipoUsuario getTipoUsuario() {
         return tipoUsuario;
     }
 
-    public void setTipoUsuario(Tipo_usuario tipoUsuario) {
+    public void setTipoUsuario(TipoUsuario tipoUsuario) {
         this.tipoUsuario = tipoUsuario;
+    }
+
+    public Sucursal getSucursal() {
+        return sucursal;
+    }
+
+    public void setSucursal(Sucursal sucursal) {
+        this.sucursal = sucursal;
     }
 
     @Override
@@ -97,8 +107,9 @@ public class Usuario {
                 ", email='" + email + '\'' +
                 ", password='" + password + '\'' +
                 ", telefono='" + telefono + '\'' +
-                ", llave_secreta='" + llave_secreta + '\'' +
+                ", token='" + token + '\'' +
                 ", tipoUsuario=" + tipoUsuario +
+                ", sucursal=" + sucursal +
                 ", status=" + status +
                 '}';
     }

@@ -5,31 +5,27 @@ import org.hibernate.annotations.SQLDelete;
 import org.hibernate.annotations.Where;
 
 @Entity
-@Table(name = "tipo_usuario")
-@SQLDelete(sql = "UPDATE tipo_usuario SET status = 0 WHERE id = ?")
+@Table(name = "acceso")
+@SQLDelete(sql = "UPDATE acceso SET status = 0 WHERE id = ?")
 @Where(clause = "status = 1")
-public class Tipo_usuario {
+public class Acceso {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+
     private Integer id;
-    private String descripcion;
     private Integer status;
+    @Enumerated(EnumType.STRING)
+    private TipoUsuario tipo_usuario;
+    @ManyToOne
+    @JoinColumn(name = "modulo_id")
+    private Modulo modulo;
 
     public Integer getId() {
         return id;
     }
 
-
     public void setId(Integer id) {
         this.id = id;
-    }
-
-    public String getDescripcion() {
-        return descripcion;
-    }
-
-    public void setDescripcion(String descripcion) {
-        this.descripcion = descripcion;
     }
 
     public Integer getStatus() {
@@ -40,12 +36,29 @@ public class Tipo_usuario {
         this.status = status;
     }
 
+    public TipoUsuario getTipoUsuario() {
+        return tipo_usuario;
+    }
+
+    public void setTipoUsuario(TipoUsuario tipoUsuario) {
+        this.tipo_usuario = tipoUsuario;
+    }
+
+    public Modulo getModulo() {
+        return modulo;
+    }
+
+    public void setModulo(Modulo modulo) {
+        this.modulo = modulo;
+    }
+
     @Override
     public String toString() {
-        return "Tipo_usuario{" +
+        return "Acceso{" +
                 "id=" + id +
-                ", descripcion='" + descripcion + '\'' +
                 ", status=" + status +
+                ", tipoUsuario=" + tipo_usuario +
+                ", modulo=" + modulo +
                 '}';
     }
 }
