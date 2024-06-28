@@ -7,25 +7,21 @@ import org.hibernate.annotations.Where;
 import java.math.BigDecimal;
 
 @Entity
-@Table(name = "servicio")
-@SQLDelete(sql = "UPDATE servicio SET status = 0 WHERE id = ?")
+@Table(name = "inventario")
+@SQLDelete(sql = "UPDATE inventario SET status = 0 WHERE id = ?")
 @Where(clause = "status = 1")
-public class Servicio {
+public class Inventario {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
 
     private Integer id;
     private String nombre;
-    private String descripcion;
-    private String duracion;
+    private Integer cantidad;
     private BigDecimal precio;
     private Integer status;
     @ManyToOne
-    @JoinColumn(name = "categoria_id")
-    private Categoria categoria;
-    @ManyToOne
-    @JoinColumn(name = "personal_id")
-    private Personal personal;
+    @JoinColumn(name = "sucursalServicio_id")
+    private SucursalServicio sucursalServicio;
 
     public Integer getId() {
         return id;
@@ -43,20 +39,12 @@ public class Servicio {
         this.nombre = nombre;
     }
 
-    public String getDescripcion() {
-        return descripcion;
+    public Integer getCantidad() {
+        return cantidad;
     }
 
-    public void setDescripcion(String descripcion) {
-        this.descripcion = descripcion;
-    }
-
-    public String getDuracion() {
-        return duracion;
-    }
-
-    public void setDuracion(String duracion) {
-        this.duracion = duracion;
+    public void setCantidad(Integer cantidad) {
+        this.cantidad = cantidad;
     }
 
     public BigDecimal getPrecio() {
@@ -75,33 +63,23 @@ public class Servicio {
         this.status = status;
     }
 
-    public Categoria getCategoria() {
-        return categoria;
+    public SucursalServicio getSucursalServicio() {
+        return sucursalServicio;
     }
 
-    public void setCategoria(Categoria categoria) {
-        this.categoria = categoria;
-    }
-
-    public Personal getPersonal() {
-        return personal;
-    }
-
-    public void setPersonal(Personal personal) {
-        this.personal = personal;
+    public void setSucursalServicio(SucursalServicio sucursalServicio) {
+        this.sucursalServicio = sucursalServicio;
     }
 
     @Override
     public String toString() {
-        return "Servicio{" +
+        return "Inventario{" +
                 "id=" + id +
                 ", nombre='" + nombre + '\'' +
-                ", descripcion='" + descripcion + '\'' +
-                ", duracion='" + duracion + '\'' +
+                ", cantidad=" + cantidad +
                 ", precio=" + precio +
                 ", status=" + status +
-                ", categoria=" + categoria +
-                ", personal=" + personal +
+                ", sucursalServicio=" + sucursalServicio +
                 '}';
     }
 }

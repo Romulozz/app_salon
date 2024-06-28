@@ -20,8 +20,10 @@ public class Cita {
     private Integer id;
     private LocalDateTime fecha;
     private LocalDateTime hora;
+    private BigDecimal monto;
+    private String comprobante;
     @Enumerated(EnumType.STRING)
-    private MetodoPago metodo_pago;
+    private EstadoPago estadoPago;
     @ManyToOne
     @JoinColumn(name = "usuario_id")
     private Usuario usuario;
@@ -51,12 +53,28 @@ public class Cita {
         this.hora = hora;
     }
 
-    public MetodoPago getMetodo_pago() {
-        return metodo_pago;
+    public BigDecimal getMonto() {
+        return monto;
     }
 
-    public void setMetodo_pago(MetodoPago metodo_pago) {
-        this.metodo_pago = metodo_pago;
+    public void setMonto(BigDecimal monto) {
+        this.monto = monto;
+    }
+
+    public String getComprobante() {
+        return comprobante;
+    }
+
+    public void setComprobante(String comprobante) {
+        this.comprobante = comprobante;
+    }
+
+    public EstadoPago getEstadoPago() {
+        return estadoPago;
+    }
+
+    public void setEstadoPago(EstadoPago estadoPago) {
+        this.estadoPago = estadoPago;
     }
 
     public Usuario getUsuario() {
@@ -81,7 +99,9 @@ public class Cita {
                 "id=" + id +
                 ", fecha=" + fecha +
                 ", hora=" + hora +
-                ", metodo_pago=" + metodo_pago +
+                ", monto=" + monto +
+                ", comprobante='" + comprobante + '\'' +
+                ", estadoPago=" + estadoPago +
                 ", usuario=" + usuario +
                 ", status=" + status +
                 '}';
