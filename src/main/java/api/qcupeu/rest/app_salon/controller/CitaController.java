@@ -25,7 +25,7 @@ public class CitaController {
         return cita;
     }
 
-    @PutMapping("/citas")
+    @PutMapping("/citas/{id}")
     public Cita modificar(@RequestBody Cita cita){
         service.modificar(cita);
         return cita;

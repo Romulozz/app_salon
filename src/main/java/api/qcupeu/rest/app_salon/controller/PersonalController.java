@@ -25,7 +25,7 @@ public class PersonalController {
         return personal;
     }
 
-    @PutMapping("/personal")
+    @PutMapping("/personal/{id}")
     public Personal modificar(@RequestBody Personal personal){
         service.modificar(personal);
         return personal;

@@ -24,6 +24,9 @@ public class Servicio {
     @JoinColumn(name = "categoria_id")
     private Categoria categoria;
     @ManyToOne
+    @JoinColumn(name = "sub_categoria_id")
+    private SubCategoria subCategoria;
+    @ManyToOne
     @JoinColumn(name = "personal_id")
     private Personal personal;
 
@@ -83,6 +86,14 @@ public class Servicio {
         this.categoria = categoria;
     }
 
+    public SubCategoria getSubCategoria() {
+        return subCategoria;
+    }
+
+    public void setSubCategoria(SubCategoria subCategoria) {
+        this.subCategoria = subCategoria;
+    }
+
     public Personal getPersonal() {
         return personal;
     }
@@ -101,6 +112,7 @@ public class Servicio {
                 ", precio=" + precio +
                 ", status=" + status +
                 ", categoria=" + categoria +
+                ", subCategoria=" + subCategoria +
                 ", personal=" + personal +
                 '}';
     }

@@ -27,7 +27,7 @@ public class InventarioController {
         return inventario;
     }
 
-    @PutMapping("/inventario")
+    @PutMapping("/inventario/{id}")
     public Inventario modificar(@RequestBody Inventario inventario){
         service.modificar(inventario);
         return inventario;
